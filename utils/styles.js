@@ -42,4 +42,18 @@ export const MainStyles = StyleSheet.create({
     paddingLeft: 10,
     width: "80%",
   },
+
+  row:{
+    alignItems:"center",
+    flexDirection: "row",
+    textAlign: "center",
+    justifyContent: "space-between",
+    borderWidth: 2,
+    padding: 20,
+  },
+
+  table:{
+    width: "80%",
+    height: "100%",
+  }
 });
