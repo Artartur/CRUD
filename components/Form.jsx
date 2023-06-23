@@ -12,16 +12,16 @@ export default function Form() {
   const navigate = useNavigation();
   const [data, setData] = useState(formData);
 
-  const handleInputChange = (value) => {
+  const handleInputChange = (name, value) => {
     setData((prevValue) => ({
       ...prevValue,
-      [value.target.name]: value.target.value,
+      [name]: value,
     }));
   };
 
   const onSubmit = () => {
     axios
-      .post("http://localhost:3000/register", {
+      .post("http://localhost:3000/Users", {
         description: data.description,
         name: data.name,
       })
@@ -29,7 +29,7 @@ export default function Form() {
         Alert.alert("Usuario cadastrado com sucesso!");
         navigate.navigate("Main");
       })
-      .catch(Alert.alert("Houve algum erro ao cadastrar"));
+      .catch((err)=>Alert.alert("Houve algum erro ao cadastrar", err));
   };
 
   return (
@@ -38,7 +38,7 @@ export default function Form() {
         <View style={MainStyles.containerButton}>
           <TextInput
             name="name"
-            onChangeText={handleInputChange}
+            onChangeText={(value) => handleInputChange('name', value)}
             placeholder="Name"
             style={MainStyles.inputs}
             value={data.name}
@@ -48,7 +48,7 @@ export default function Form() {
             name="description"
             numberOfLines={4}
             multiline
-            onChangeText={handleInputChange}
+            onChangeText={(value) => handleInputChange('description', value)}
             placeholder="Description"
             style={MainStyles.inputs}
             value={data.description}
