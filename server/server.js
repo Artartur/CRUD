@@ -11,19 +11,27 @@ const db = new Pool({
   user: "postgres",
   host: "localhost",
   database: "crud",
-  password: "password",
+  password: "test",
   port: 5432,
 });
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Hello, World!");
+app.get("/Users", (req, res) => {
+  let sql = "SELECT * FROM Users"
+
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao registrar um usuario");
+    } else {
+      res.status(200).json(result.rows);
+    }
+  })
 });
 
-app.post("/register", (req, res) => {
-  const { description } = req.body;
-  const { name } = req.body;
+app.post("/Users", (req, res) => {
+  const { description, name } = req.body;
 
   let sql = "INSERT INTO Users (description, name) VALUES ($1, $2)";
 
@@ -37,8 +45,36 @@ app.post("/register", (req, res) => {
   });
 });
 
-// app.put();
+app.put("/Users/:id", (req, res) => {
+  const { userId } = req.params.id;
+  const { description, name } = req.body;
 
-// app.delete();
+  let sql = "UPDATE Users SET description = $1, name = $2 WHERE id = $3";
+
+  db.query(sql, [description, name, userId], (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao atualizar os dados desse usuario");
+    } else {
+      res.status(200).send("Dados atualizados com sucesso!");
+    }
+  });
+})
+
+app.delete("/Users/:id", (req, res) => {
+  const userId = req.params.id;
+  
+  let sql = "DELETE FROM Users WHERE id = $1"
+
+  db.query(sql, [userId], (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao deletar um usuario");
+    } else {
+      res.status(200).send("Usuario deletado com sucesso!");
+    }
+  });
+
+});
 
 app.listen(port, console.log("Server On"));
