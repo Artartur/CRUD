@@ -14,6 +14,6 @@
 * Change database connection data (const db on server.js)
 * Run npm start 
 * Go to server/ directory 
-* Run nodemon server.js - To start the backend
+* Run nodemon server.js in another terminal tab - To start the backend
 
 **On Expo app, Press "Scan QR Code" and scan the QR code that is shown on terminal after running npm start**
