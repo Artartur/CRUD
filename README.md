@@ -3,7 +3,7 @@
 **The app is mobile so you have to download the Expo app from the PlayStore**
 
 * Clone the Repo
-* npm install
+* Run npm install
 * Change the ips of API requests and add yours (Form, ViewData and axios)
 *  Create a database on postegreSQL called crud
    * create a table called Users
@@ -12,8 +12,8 @@
      - description - varchar(250) and Not Null
      - name - varchar(80) and Not Null
 * Change database connection data (const db on server.js)
-* npm start 
+* Run npm start 
 * Go to server/ directory 
-* nodemon server.js - To start the backend
+* Run nodemon server.js - To start the backend
 
 **On Expo app, Press "Scan QR Code" and scan the QR code that is shown on terminal after running npm start**
