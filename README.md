@@ -1,6 +1,6 @@
 # CRUD
 
-The Application is mobile, so you must download Expo app on PlayStore.
+**The app is mobile so you have to download the Expo app from the PlayStore**
 
 * Clone the Repo
 * npm install
