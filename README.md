@@ -4,7 +4,7 @@
 
 * Clone the Repo
 * npm install
-* Change the ips of API requests and add yours
+* Change the ips of API requests and add yours (Form, ViewData and axios)
 *  Create a database on postegreSQL called crud
    * create a table called Users
    * add 3 columns:
