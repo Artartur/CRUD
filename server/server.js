@@ -46,7 +46,7 @@ app.post("/Users", (req, res) => {
 });
 
 app.put("/Users/:id", (req, res) => {
-  const { userId } = req.params.id;
+  const userId  = req.params.id;
   const { description, name } = req.body;
 
   let sql = "UPDATE Users SET description = $1, name = $2 WHERE id = $3";
